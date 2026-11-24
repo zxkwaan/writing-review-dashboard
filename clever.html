@@ -8,7 +8,9 @@
   <title>Clever Widget | Writing Review</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="clever.css">
+  <link rel="stylesheet" href="queue.css">
   <script src="clever.js" defer></script>
+  <script src="queue.js" defer></script>
 </head>
 <body>
   <header>
@@ -26,7 +28,37 @@
       <p id="clever-status" role="status"></p>
       <noscript><p>Enable JavaScript to load the widget.</p></noscript>
     </section>
-    <div id="clever-frame"></div>
+    <div class="draft-queue-layout">
+      <section class="panel draft-queue" aria-labelledby="draft-queue-title">
+        <h2 id="draft-queue-title">Queue a long draft</h2>
+        <p>Split a draft into portions of up to 1,500 words. Paste and submit each portion in Clever yourself, then paste each result back here to combine them. The queue stays in this tab.</p>
+        <div id="queue-setup">
+          <label for="queue-draft">Full draft</label>
+          <textarea id="queue-draft" rows="5" spellcheck="false" autocomplete="off" placeholder="Paste your full draft here"></textarea>
+          <button class="primary" id="queue-create" type="button">Split into portions</button>
+        </div>
+        <div id="queue-current" hidden>
+          <p id="queue-progress" aria-live="polite"></p>
+          <label for="queue-portion">Portion to paste into Clever</label>
+          <textarea id="queue-portion" rows="4" readonly spellcheck="false"></textarea>
+          <button class="quiet" id="queue-copy" type="button">Copy portion</button>
+          <label for="queue-result">Clever result for this portion</label>
+          <textarea id="queue-result" rows="4" spellcheck="false" autocomplete="off" placeholder="Paste Clever’s result here"></textarea>
+          <div class="queue-buttons">
+            <button class="quiet" id="queue-previous" type="button">Previous</button>
+            <button class="quiet" id="queue-next" type="button">Next portion</button>
+          </div>
+          <div id="queue-combined-panel" hidden>
+            <label for="queue-combined">Combined results</label>
+            <textarea id="queue-combined" rows="5" readonly spellcheck="false"></textarea>
+            <button class="primary" id="queue-copy-combined" type="button">Copy combined text</button>
+          </div>
+          <button class="quiet" id="queue-clear" type="button">Clear draft and results</button>
+        </div>
+        <p id="queue-status" role="status"></p>
+      </section>
+      <div id="clever-frame"></div>
+    </div>
   </main>
 </body>
 </html>
