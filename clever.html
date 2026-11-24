@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; frame-src https://widgets.cleverhumanizer.ai; form-action 'none'; base-uri 'none'">
+  <meta name="referrer" content="no-referrer">
+  <title>Clever Widget | Writing Review</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="clever.css">
+  <script src="clever.js" defer></script>
+</head>
+<body>
+  <header>
+    <div class="brand"><span class="mark" aria-hidden="true">W</span><strong>Writing Review</strong></div>
+    <a href="./">Back to editor</a>
+  </header>
+  <main class="clever-page">
+    <h1>Clever Humanizer</h1>
+    <section class="panel clever-notice" aria-labelledby="privacy-title">
+      <h2 id="privacy-title">Before you open Clever</h2>
+      <p>Clever is a separate service. Loading the widget connects your browser to Clever. If you submit text in the widget, Clever receives it and retains the text and results for 24 hours. The widget owner can review its usage history. Keep sensitive writing in the local editor.</p>
+      <p>The Writing Review editor keeps its text separate. You choose what to paste into Clever.</p>
+      <p><a href="https://cleverhumanizer.ai/privacy">Read Clever’s privacy policy</a></p>
+      <button class="primary" type="button" id="load-clever" aria-controls="clever-frame" data-embed-src="https://widgets.cleverhumanizer.ai/embed/9e78c04602a941b5a11e32cc23b389bd?theme=dark">Load Clever widget</button>
+      <p id="clever-status" role="status"></p>
+      <noscript><p>Enable JavaScript to load the widget.</p></noscript>
+    </section>
+    <div id="clever-frame"></div>
+  </main>
+</body>
+</html>
