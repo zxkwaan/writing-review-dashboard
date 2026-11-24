@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="clever.css">
   <link rel="stylesheet" href="queue.css">
   <script src="clever.js" defer></script>
-  <script src="queue.js" defer></script>
+  <script src="queue.js?v=2" defer></script>
 </head>
 <body>
   <header>
@@ -45,6 +45,7 @@
           <label for="queue-result">Clever result for this portion</label>
           <textarea id="queue-result" rows="4" spellcheck="false" autocomplete="off" placeholder="Paste Clever’s result here"></textarea>
           <div class="queue-buttons">
+            <button class="primary" id="queue-save-next" type="button" disabled>Save result &amp; copy next portion</button>
             <button class="quiet" id="queue-previous" type="button">Previous</button>
             <button class="quiet" id="queue-next" type="button">Next portion</button>
           </div>
