@@ -47,6 +47,8 @@
   const current = byId('current');
   const previous = byId('previous');
   const next = byId('next');
+  const saveNext = byId('save-next');
+  const copyPortion = byId('copy');
   const portion = byId('portion');
   const result = byId('result');
   const progress = byId('progress');
@@ -60,6 +62,7 @@
     const saved = portions.filter((entry) => entry.result.trim()).length;
     const progressText = `Portion ${active + 1} of ${portions.length} · ${portions[active].words} words · ${saved} results collected`;
     if (progress.textContent !== progressText) progress.textContent = progressText;
+    if (saveNext) saveNext.disabled = next.disabled || !result.value.trim();
 
     const complete = saved === portions.length;
     combinedPanel.hidden = !complete;
@@ -75,14 +78,14 @@
     refreshProgress();
   }
 
-  async function copyField(field, successMessage) {
+  async function copyField(field, successMessage, fallbackMessage = 'Text selected. Use your browser’s Copy command.') {
     try {
       await navigator.clipboard.writeText(field.value);
       message.textContent = successMessage;
     } catch {
       field.focus();
       field.select();
-      message.textContent = 'Text selected. Use your browser’s Copy command.';
+      message.textContent = fallbackMessage;
     }
   }
 
@@ -99,22 +102,35 @@
     setup.hidden = true;
     current.hidden = false;
     showPortion();
-    byId('copy').focus();
+    copyPortion.focus();
   });
 
   previous.addEventListener('click', () => {
     active--;
     showPortion();
-    if (previous.disabled) byId('copy').focus();
+    if (previous.disabled) copyPortion.focus();
   });
 
   next.addEventListener('click', () => {
     active++;
     showPortion();
-    if (next.disabled) byId('copy').focus();
+    if (next.disabled) copyPortion.focus();
   });
 
-  byId('copy').addEventListener('click', () => copyField(portion, 'Portion copied. Paste it into Clever when ready.'));
+  saveNext?.addEventListener('click', () => {
+    if (saveNext.disabled) return;
+    portions[active].result = result.value;
+    active++;
+    showPortion();
+    copyPortion.focus({ preventScroll: true });
+    return copyField(
+      portion,
+      'Result saved in this tab. Next portion copied. Paste it into Clever.',
+      'Result saved in this tab. Next portion selected. Use your browser’s Copy command.',
+    );
+  });
+
+  copyPortion.addEventListener('click', () => copyField(portion, 'Portion copied. Paste it into Clever when ready.'));
   byId('copy-combined').addEventListener('click', () => copyField(combined, 'Combined text copied.'));
 
   result.addEventListener('input', () => {
