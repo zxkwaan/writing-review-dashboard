@@ -1,0 +1,61 @@
+.draft-queue-layout {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+.draft-queue-layout > * {
+  flex: 1 1 400px;
+  min-width: 0;
+}
+
+.draft-queue-layout #clever-frame:empty {
+  display: none;
+}
+
+.draft-queue {
+  padding: clamp(16px, 3vw, 24px);
+}
+
+.draft-queue p {
+  color: var(--muted);
+}
+
+.draft-queue label {
+  display: block;
+  margin: 14px 0 6px;
+  font-weight: 650;
+}
+
+.draft-queue textarea {
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+}
+
+.draft-queue textarea:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.draft-queue button:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.queue-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+#queue-clear {
+  margin-top: 14px;
+}
+
+#queue-status:empty {
+  display: none;
+}
