@@ -27,6 +27,24 @@ header a {
   margin: 0;
 }
 
+#clever-frame {
+  position: relative;
+}
+
+/* The site covers the top brand area. The badge, iframe controls and footer remain accessible. */
+#clever-frame::after {
+  content: "";
+  position: absolute;
+  top: 1px;
+  right: 70px;
+  left: 1px;
+  height: 50px;
+  z-index: 1;
+  border-radius: 14px 0 0;
+  background: #171a16;
+  pointer-events: none;
+}
+
 #clever-frame iframe {
   display: block;
   width: 100%;
