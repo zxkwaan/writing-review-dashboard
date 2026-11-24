@@ -1,0 +1,36 @@
+.clever-page {
+  max-width: 1000px;
+}
+
+.clever-page a,
+.clever-link,
+header a {
+  color: var(--accent);
+}
+
+.clever-notice {
+  padding: clamp(16px, 4vw, 28px);
+  margin: 20px 0;
+}
+
+.clever-notice p {
+  max-width: 70ch;
+  color: var(--muted);
+}
+
+.clever-notice button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+#clever-status:empty {
+  margin: 0;
+}
+
+#clever-frame iframe {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 15px;
+  background: var(--card);
+}
