@@ -8,13 +8,34 @@
   <meta name="description" content="A private-in-your-browser writing review workspace.">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="clever.css">
+  <link rel="stylesheet" href="rewrite.css">
 </head>
 <body>
   <header><div class="brand"><span class="mark">W</span><div><strong>Writing Review</strong><small>Clearer writing, your way</small></div></div><button id="theme" class="quiet" type="button" aria-label="Toggle color theme">◐ <span>Theme</span></button></header>
   <main>
     <section class="intro"><div><p class="eyebrow">YOUR WRITING SPACE</p><h1>Make every word count.</h1><p>Draft, review, and refine with practical feedback. Your text stays in this browser tab.<br><a class="clever-link" href="clever.html">Open Clever Humanizer</a></p></div><div class="privacy">✦ Local review only<br><small>No account, upload, or server processing</small></div></section>
     <div class="toolbar"><div class="tabs" role="tablist" aria-label="Workspace view"><button class="tab active" data-view="editor" role="tab" aria-selected="true">Editor</button><button class="tab" data-view="compare" role="tab" aria-selected="false">Compare</button></div><div class="actions"><button id="clear" class="quiet" type="button">Clear</button><button id="copy" class="quiet" type="button">Copy</button><button id="export" class="primary" type="button">Export .txt ↓</button></div></div>
-    <div id="editor-view" class="workspace"><section class="panel editor"><div class="panel-head"><h2>Your draft</h2><span id="word-count">0 words</span></div><label class="sr-only" for="draft">Your draft</label><textarea id="draft" spellcheck="true" placeholder="Paste or write your draft here. Your browser’s spellchecker can help with spelling as you type."></textarea><div class="editor-foot"><span id="char-count">0 characters</span><span id="read-time">0 min read</span></div></section><aside class="panel feedback"><div class="panel-head"><h2>Writing insights</h2><span class="pill">Live</span></div><div class="metrics"><div><strong id="sentences">0</strong><small>sentences</small></div><div><strong id="avg-sentence">0</strong><small>words / sentence</small></div><div><strong id="reading-level">—</strong><small>reading ease</small></div></div><h3>Suggestions</h3><ul id="suggestions"><li>Start writing to see feedback.</li></ul><p class="note">Suggestions are rule based. Review them in context; they are not a substitute for a human editor.</p></aside></div>
+    <div id="editor-view" class="workspace"><section class="panel editor"><div class="panel-head"><h2>Your draft</h2><span id="word-count">0 words</span></div><label class="sr-only" for="draft">Your draft</label><textarea id="draft" spellcheck="true" placeholder="Paste or write your draft here. Your browser’s spellchecker can help with spelling as you type."></textarea><div class="editor-foot"><span id="char-count">0 characters</span><span id="read-time">0 min read</span></div></section><aside class="panel feedback"><div class="panel-head"><h2>Writing insights</h2><span class="pill">Live</span></div><div class="metrics"><div><strong id="sentences">0</strong><small>sentences</small></div><div><strong id="avg-sentence">0</strong><small>words / sentence</small></div><div><strong id="reading-level">—</strong><small>reading ease</small></div></div><h3>Suggestions</h3><ul id="suggestions"><li>Start writing to see feedback.</li></ul><p class="note">Suggestions are rule based. Review them in context; they are not a substitute for a human editor.</p>
+      <div class="rewrite-tools">
+        <button class="primary" id="rewrite-draft" type="button" aria-controls="rewrite-result">Rewrite for clarity</button>
+        <p class="note">Simplifies common wordy English phrases on this device. Your draft stays intact.</p>
+        <p id="rewrite-status" role="status"></p>
+      </div>
+    </aside>
+      <section class="panel rewrite-output" id="rewrite-result" hidden>
+        <div class="panel-head">
+          <h2>Suggested revision</h2>
+          <button class="quiet" id="copy-rewrite" type="button">Copy revision</button>
+        </div>
+        <label class="sr-only" for="rewrite-output">Suggested revision</label>
+        <textarea id="rewrite-output" rows="7" readonly spellcheck="false" aria-describedby="rewrite-outcome"></textarea>
+        <div class="editor-foot">
+          <span id="rewrite-outcome"></span>
+          <span id="rewrite-copy-status" role="status"></span>
+        </div>
+      </section>
+    </div>
     <div id="compare-view" class="workspace comparison" hidden><section class="panel"><div class="panel-head"><h2>Original</h2><span id="original-count">0 words</span></div><textarea id="original" aria-label="Original text" placeholder="Paste the original version here."></textarea></section><section class="panel"><div class="panel-head"><h2>Revised</h2><span id="revised-count">0 words</span></div><textarea id="revised" aria-label="Revised text" placeholder="Write or paste your revised version here."></textarea></section><p id="comparison-summary" class="comparison-summary">Add both versions to compare their length and readability.</p></div>
   </main><footer>Writing Review · Works entirely in your browser · No text is saved or transmitted</footer><div id="toast" role="status" aria-live="polite"></div><script src="script.js"></script>
+  <script src="rewrite.js"></script>
 </body></html>
