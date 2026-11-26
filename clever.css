@@ -52,3 +52,31 @@ header a {
   border-radius: 15px;
   background: var(--card);
 }
+
+.clever-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.clever-header-actions a {
+  white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  .clever-header-actions {
+    gap: 8px;
+  }
+
+  .clever-header-actions a {
+    font-size: 0.875rem;
+  }
+
+  .clever-header-actions button {
+    padding: 8px 10px;
+  }
+
+  .clever-header-actions button span {
+    display: none;
+  }
+}
